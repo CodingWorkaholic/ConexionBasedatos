@@ -1,8 +1,12 @@
 
 package capaPersistencia;
 
+import capaExcepcion.BDException;
+import capaLogica.Persona;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class guardarPersona {
@@ -12,9 +16,26 @@ public class guardarPersona {
     //[Cerrar la conexión]
     //esta es la capa intermediaria
     
-    private static final String SQLguardar=("INSERT INTO persona.Personas(CI, Nombre, Apellido)Values (?,?,?)");
+    private static final String SQLguardar=("INSERT INTO persona.Persona(CI, Nombre, Apellido)Values (?,?,?)");
     public Conexion cone=new Conexion();
     public PreparedStatement ps; //prepara los datos
     public ResultSet rs; //muestra los datos
+    
+    public void guardarPersona(Persona per) throws Exception,BDException {
+    try{
+        int resultado=0; //variable que guarda la conexión
+        Connection con= cone.getConnection(); //Me conecto
+        ps=(PreparedStatement)con.prepareStatement(SQLguardar); //"con" es la variable en la cual se guarda la conexión
+        
+        ps.setString(1,per.getCi());
+        ps.setString(2,per.getNombre());
+        ps.setString(3,per.getApellido());
+        
+       resuecuteUpdltado=ps.exate();
+    }   catch (SQLException sqle) {
+        throw new Exception("Error en base de datos");
+            
+        }
+}
     
 }

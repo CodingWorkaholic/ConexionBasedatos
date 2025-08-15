@@ -10,11 +10,8 @@ package capaLogica;
  */
 public class Persona {
     
-    String ci, nombre, apellido;
+     private String ci, nombre, apellido;
     
-    public Persona(){
-        
-    }
 
     public String getCi() {
         return ci;

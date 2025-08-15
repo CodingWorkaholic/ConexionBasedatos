@@ -1,0 +1,7 @@
+capaGrafica/IngresoDatos$1.class
+capaPersistencia/Conexion.class
+capaPersistencia/guardarPersona.class
+capaGrafica/IngresoDatos.class
+capaExcepcion/BDException.class
+capaLogica/Personas.class
+capaLogica/Persona.class

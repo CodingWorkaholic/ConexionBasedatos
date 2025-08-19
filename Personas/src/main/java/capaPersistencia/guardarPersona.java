@@ -20,6 +20,7 @@ public class guardarPersona {
     public Conexion cone=new Conexion();
     public PreparedStatement ps; //prepara los datos
     public ResultSet rs; //muestra los datos
+    private ResultSet resultado; 
     
     public void guardarPersona(Persona per) throws Exception,BDException {
     try{
@@ -31,7 +32,7 @@ public class guardarPersona {
         ps.setString(2,per.getNombre());
         ps.setString(3,per.getApellido());
         
-       resuecuteUpdltado=ps.exate();
+       resultado=ps.executeUpdate();
     }   catch (SQLException sqle) {
         throw new Exception("Error en base de datos");
             

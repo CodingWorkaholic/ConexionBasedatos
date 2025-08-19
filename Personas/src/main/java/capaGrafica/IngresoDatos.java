@@ -134,6 +134,7 @@ public class IngresoDatos extends javax.swing.JFrame {
         if (txtCI.getText().isEmpty() || txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Haz de insertar texto");
         } else{
+            
             Persona per= new Persona();
             String nombre=txtNombre.getText();
             String ci=txtCI.getText();
@@ -142,6 +143,8 @@ public class IngresoDatos extends javax.swing.JFrame {
             per.setNombre(nombre);
             per.setCi(ci);
             per.setApellido(apellido);
+            
+            
             
             JOptionPane.showMessageDialog(null, "Se ha guardado con éxito");
         }

@@ -135,14 +135,14 @@ public class IngresoDatos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Haz de insertar texto");
         } else{
             
-            Persona per= new Persona();
+            Persona pers= new Persona();
             String nombre=txtNombre.getText();
             String ci=txtCI.getText();
             String apellido=txtApellido.getText();
             
-            per.setNombre(nombre);
-            per.setCi(ci);
-            per.setApellido(apellido);
+            pers.setNombre(nombre);
+            pers.setCi(ci);
+            pers.setApellido(apellido);
             
             
             

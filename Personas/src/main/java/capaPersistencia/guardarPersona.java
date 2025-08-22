@@ -22,15 +22,15 @@ public class guardarPersona {
     public ResultSet rs; //muestra los datos
     private ResultSet resultado; 
     
-    public void guardarPersona(Persona per) throws Exception,BDException {
+    public void guardarPersona(Persona pers) throws Exception,BDException {
     try{
         int resultado=0; //variable que guarda la conexión
         Connection con= cone.getConnection(); //Me conecto
         ps=(PreparedStatement)con.prepareStatement(SQLguardar); //"con" es la variable en la cual se guarda la conexión
         
-        ps.setString(1,per.getCi());
-        ps.setString(2,per.getNombre());
-        ps.setString(3,per.getApellido());
+        ps.setString(1,pers.getCi());
+        ps.setString(2,pers.getNombre());
+        ps.setString(3,pers.getApellido());
         
        resultado=ps.executeUpdate();
     }   catch (SQLException sqle) {

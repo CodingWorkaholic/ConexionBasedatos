@@ -5,5 +5,5 @@ capaPersistencia/guardarPersona.class
 capaGrafica/IngresoDatos.class
 capaExcepcion/BDException.class
 capaLogica/fachadaPersona.class
-capaLogica/Personas.class
+capaExcepcion/PersonaExepcion.class
 capaLogica/Persona.class

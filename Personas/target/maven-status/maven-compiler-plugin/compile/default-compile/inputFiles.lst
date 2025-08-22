@@ -1,7 +1,7 @@
 /Users/alex/Documents/GitHub/ConexionBasedatos/Personas/src/main/java/capaExcepcion/BDException.java
+/Users/alex/Documents/GitHub/ConexionBasedatos/Personas/src/main/java/capaExcepcion/PersonaExepcion.java
 /Users/alex/Documents/GitHub/ConexionBasedatos/Personas/src/main/java/capaGrafica/IngresoDatos.java
 /Users/alex/Documents/GitHub/ConexionBasedatos/Personas/src/main/java/capaLogica/Persona.java
-/Users/alex/Documents/GitHub/ConexionBasedatos/Personas/src/main/java/capaLogica/Personas.java
 /Users/alex/Documents/GitHub/ConexionBasedatos/Personas/src/main/java/capaLogica/fachadaPersona.java
 /Users/alex/Documents/GitHub/ConexionBasedatos/Personas/src/main/java/capaPersistencia/Conexion.java
 /Users/alex/Documents/GitHub/ConexionBasedatos/Personas/src/main/java/capaPersistencia/guardarPersona.java

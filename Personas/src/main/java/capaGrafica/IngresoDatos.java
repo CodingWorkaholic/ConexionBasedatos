@@ -4,7 +4,9 @@
  */
 package capaGrafica;
 
+import capaExcepcion.PersonaExepcion;
 import capaLogica.Persona;
+import capaLogica.fachadaPersona;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,7 +16,7 @@ import javax.swing.JOptionPane;
 public class IngresoDatos extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(IngresoDatos.class.getName());
-
+    fachadaPersona fachada = new fachadaPersona();
     /**
      * Creates new form IngresoDatos
      */
@@ -136,17 +138,27 @@ public class IngresoDatos extends javax.swing.JFrame {
         } else{
             
             Persona pers= new Persona();
+            
+            try{
             String nombre=txtNombre.getText();
             String ci=txtCI.getText();
             String apellido=txtApellido.getText();
+            
+           
             
             pers.setNombre(nombre);
             pers.setCi(ci);
             pers.setApellido(apellido);
             
-            
+            fachada.guardarPersona(pers);
             
             JOptionPane.showMessageDialog(null, "Se ha guardado con éxito");
+            }catch (PersonaExepcion ex){
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+                JOptionPane.showMessageDialog(this, "No se pudo guardar los datos");
+            } catch (Exception ex) {
+                System.getLogger(IngresoDatos.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
         }
         
     }//GEN-LAST:event_btnGuardarActionPerformed

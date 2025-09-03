@@ -7,6 +7,7 @@ package capaGrafica;
 import capaExcepcion.PersonaExepcion;
 import capaLogica.Persona;
 import capaLogica.fachadaPersona;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,6 +45,8 @@ public class IngresoDatos extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        btnMostrar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
@@ -81,6 +84,26 @@ public class IngresoDatos extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel4.setText("Porfavor, ingrese sus datos");
 
+        btnMostrar.setBackground(new java.awt.Color(255, 255, 255));
+        btnMostrar.setForeground(new java.awt.Color(0, 0, 0));
+        btnMostrar.setText("Mostrar");
+        btnMostrar.setToolTipText("");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setToolTipText("");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,9 +113,6 @@ public class IngresoDatos extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(btnGuardar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +124,15 @@ public class IngresoDatos extends javax.swing.JFrame {
                             .addComponent(txtCI, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(btnGuardar)
+                .addGap(28, 28, 28)
+                .addComponent(btnEliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(btnMostrar)
+                .addGap(65, 65, 65))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,9 +151,12 @@ public class IngresoDatos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(26, 26, 26)
-                .addComponent(btnGuardar)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnMostrar)
+                    .addComponent(btnEliminar))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -167,6 +198,49 @@ public class IngresoDatos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCIActionPerformed
 
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        // TODO add your handling code here:
+        if (txtCI.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Haz de insertar una cedula");
+        }else{
+            Persona pers= new Persona();
+            try{
+                pers=fachada.busquedaCI(txtCI.getText());
+                txtCI.setText(pers.getCi());
+                txtNombre.setText(pers.getNombre());
+                txtApellido.setText(pers.getApellido());
+            }catch (PersonaExepcion ex){
+               
+                JOptionPane.showMessageDialog(this, "No se pudo encontrar la persona");
+            } catch (SQLException ex) {
+                System.getLogger(IngresoDatos.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            } catch (Exception ex) {
+                System.getLogger(IngresoDatos.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        if (txtCI.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Haz de insertar una cedula");
+        }else{
+            Persona pers= new Persona();
+            try{
+                pers=fachada.eliminarPer(txtCI.getText());
+                
+            }catch (PersonaExepcion ex){
+               
+                JOptionPane.showMessageDialog(this, "No se pudo eliminar la persona");
+            } catch (SQLException ex) {
+                System.getLogger(IngresoDatos.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            } catch (Exception ex) {
+                System.getLogger(IngresoDatos.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
+        }
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -193,7 +267,9 @@ public class IngresoDatos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnMostrar;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -1,3 +1,4 @@
+capaGrafica/IngresoDatos$4.class
 capaGrafica/IngresoDatos$1.class
 capaPersistencia/Conexion.class
 capaGrafica/IngresoDatos$2.class
@@ -6,4 +7,5 @@ capaGrafica/IngresoDatos.class
 capaExcepcion/BDException.class
 capaLogica/fachadaPersona.class
 capaExcepcion/PersonaExepcion.class
+capaGrafica/IngresoDatos$3.class
 capaLogica/Persona.class

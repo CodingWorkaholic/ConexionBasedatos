@@ -223,7 +223,7 @@ public class IngresoDatos extends javax.swing.JFrame {
         } else {
             try {
                 String ci = txtCI.getText();
-                fachadaPersona.eliminarPersona(ci);
+                fachadaPersona.;
                 JOptionPane.showMessageDialog(this, "Datos eliminados correctamente");
             } catch (Exception ex){
                 Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);

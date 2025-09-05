@@ -17,7 +17,7 @@ public class guardarPersona {
     
     private static final String SQLguardar=("INSERT INTO persona.Persona(CI, Nombre, Apellido)Values (?,?,?)");
     private static final String SQL_CONSULTA_PERSONA = ("SELECT * FROM persona.Persona where CI=?");
-    private static final String EliminarPersona =("DELETE * FROM persona.Persona where CI=?;");
+    private static final String EliminarPersona =("DELETE FROM Persona where CI=?");
     public Conexion cone=new Conexion();
     public PreparedStatement ps; //prepara los datos
     public ResultSet rs; //muestra los datos
@@ -100,6 +100,9 @@ public class guardarPersona {
            con.close();
        }catch (Exception e){
             System.out.println(e);
+            throw new Exception("");
     }
+      
+       
     }
 }

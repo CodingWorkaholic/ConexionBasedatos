@@ -54,12 +54,12 @@ public class guardarPersona {
         
         try{
             Connection con;
-            con = cone.getConnection();
+            con = cone.getConnection(); //permite conectarme a la basa de datos
             ps=(PreparedStatement)con.prepareStatement(SQL_CONSULTA_PERSONA); //"con" es la variable en la cual se guarda la conexión
             ps.setString(1, ci);
-            rs = ps.executeQuery();
+            rs = ps.executeQuery();// me trae todo el objeto entero (la persona entera)
             
-            if (rs.next()){
+            if (rs.next()){ //si me ecuentra la persona...
                 
                 String Ci= rs.getString("CI");
                 String Nombre= rs.getString("Nombre");
@@ -69,17 +69,17 @@ public class guardarPersona {
                 pers.setNombre(Nombre);
                 pers.setApellido(Apellido);
                 
-            }else{
+            }else{ // error
                 throw new PersonaExepcion("La persona no se encuentra en la base de datos");
             }
-            con.close();
+            con.close(); //cierro la consulta
         
             
         }catch (Exception e){
             System.out.println(e);
             throw new PersonaExepcion("No se puede obtener la persona");
         }
-        return pers;
+        return pers; // devuelve la persona
     }
     
     public Persona eliminarPer (String ci) throws Exception, BDException, PersonaExepcion{

@@ -206,6 +206,7 @@ public class IngresoDatos extends javax.swing.JFrame {
             Persona pers= new Persona();
             try{
                 pers=fachada.busquedaCI(txtCI.getText());
+                
                 txtCI.setText(pers.getCi());
                 txtNombre.setText(pers.getNombre());
                 txtApellido.setText(pers.getApellido());

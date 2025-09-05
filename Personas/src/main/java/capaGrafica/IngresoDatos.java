@@ -1,26 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package capaGrafica;
 
 import capaExcepcion.PersonaExepcion;
 import capaLogica.Persona;
 import capaLogica.fachadaPersona;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author alex
- */
 public class IngresoDatos extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(IngresoDatos.class.getName());
     fachadaPersona fachada = new fachadaPersona();
-    /**
-     * Creates new form IngresoDatos
-     */
+    
     public IngresoDatos() {
         initComponents();
         setLocationRelativeTo(null);
@@ -223,23 +215,20 @@ public class IngresoDatos extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        if (txtCI.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Haz de insertar una cedula");
-        }else{
-            Persona pers= new Persona();
-            try{
-                pers=fachada.eliminarPer(txtCI.getText());
-                
-            }catch (PersonaExepcion ex){
-               
-                JOptionPane.showMessageDialog(this, "No se pudo eliminar la persona");
-            } catch (SQLException ex) {
-                System.getLogger(IngresoDatos.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-            } catch (Exception ex) {
-                System.getLogger(IngresoDatos.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        Persona pers = new Persona();
+        pers.setCi(txtCI.getText());
+        
+        if(txtCI.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingresa una cédula válida");
+        } else {
+            try {
+                String ci = txtCI.getText();
+                fachadaPersona.eliminarPersona(ci);
+                JOptionPane.showMessageDialog(this, "Datos eliminados correctamente");
+            } catch (Exception ex){
+                Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**

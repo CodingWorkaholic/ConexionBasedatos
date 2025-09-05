@@ -1,18 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package capaLogica;
 
-/**
- *
- * @author alex
- */
 public class Persona {
+    private String ci, nombre, apellido;
     
-     private String ci, nombre, apellido;
-    
-
     public String getCi() {
         return ci;
     }
@@ -35,8 +25,5 @@ public class Persona {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
-    }
-    
-    
-    
+    } 
 }

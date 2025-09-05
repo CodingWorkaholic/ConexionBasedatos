@@ -1,4 +1,3 @@
-
 package capaPersistencia;
 
 import capaExcepcion.BDException;
@@ -8,7 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 
 public class guardarPersona {
     // [acá van las consultas MySQL, cómo atributos privados]
@@ -82,7 +80,9 @@ public class guardarPersona {
         return pers; // devuelve la persona
     }
     
-    public Persona eliminarPer (String ci) throws Exception, BDException, PersonaExepcion{
+    public void eliminarPer (String ci) throws Exception, BDException, PersonaExepcion{
+        String eliminacion = null;
+        
        Persona pers=new Persona();
         
        try{
@@ -90,12 +90,16 @@ public class guardarPersona {
            con= cone.getConnection();
            ps=(PreparedStatement)con.prepareStatement(EliminarPersona);
            ps.setString(1, ci);
-           rs = ps.executeQuery();
+           int resultado = ps.executeUpdate();
+           
+           if(rs.next()) {
+               eliminacion = "Persona Eliminada";
+           } else {
+               eliminacion = "La persona que desea eliminar no se encuentra";
+           }
+           con.close();
        }catch (Exception e){
             System.out.println(e);
-            throw new PersonaExepcion("No se puede eliminar la persona");
     }
-        return pers;
-
     }
 }

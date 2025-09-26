@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 public class IngresoDatos extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(IngresoDatos.class.getName());
+    
     fachadaPersona fachada = new fachadaPersona();
     
     public IngresoDatos() {
@@ -220,10 +220,12 @@ public class IngresoDatos extends javax.swing.JFrame {
         
         if(txtCI.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingresa una cédula válida");
+            
         } else {
             try {
                 String ci = txtCI.getText();
-                fachadaPersona.;
+                fachada.eliminarPer(ci);
+               
                 JOptionPane.showMessageDialog(this, "Datos eliminados correctamente");
             } catch (Exception ex){
                 Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
@@ -240,16 +242,7 @@ public class IngresoDatos extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        
         //</editor-fold>
 
         /* Create and display the form */
